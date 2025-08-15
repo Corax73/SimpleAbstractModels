@@ -26,6 +26,14 @@ func (model *Model) SetTable(tableTitle string) {
 	model.table = tableTitle
 }
 
+func (model *Model) Db() *sql.DB {
+	return model.db
+}
+
+func (model *Model) SetDb(db *sql.DB) {
+	model.db = db
+}
+
 func (model *Model) Create(fields map[string]string) map[string]string {
 	response := map[string]string{}
 	if goutils.CompareMapsByStringKeys(model.Fields, fields) {
