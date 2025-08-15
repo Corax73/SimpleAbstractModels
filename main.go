@@ -1,4 +1,4 @@
-package SimpleAbstractModels
+package simpleAbstractModels
 
 import (
 	"database/sql"
@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Corax73/SimpleAbstractModels/customStructs"
 	goutils "github.com/Corax73/goUtils"
+	"github.com/Corax73/simpleAbstractModels/customStructs"
 )
 
 type Model struct {

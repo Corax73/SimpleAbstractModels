@@ -1,4 +1,4 @@
-module github.com/Corax73/SimpleAbstractModels
+module github.com/Corax73/simpleAbstractModels
 
 go 1.24.5
 
