@@ -43,11 +43,7 @@ func (model *Model) Save() map[string]string {
 		strSlice = append(strSlice, "INSERT INTO ")
 		strSlice = append(strSlice, model.Table())
 		strSlice = append(strSlice, " (")
-		fields := goutils.GetMapKeysWithValue(model.Fields)
-		index := goutils.GetIndexByStrValue(fields, "id")
-		if index != -1 {
-			fields = slices.Delete(fields, index, index+1)
-		}
+		fields := goutils.GetMapKeysWithValue(goutils.GetMapWithoutKeys(model.Fields, []string{"id"}))
 		strSlice = append(strSlice, strings.Trim(strings.Join(fields, ","), ","))
 		strSlice = append(strSlice, ") VALUES (")
 		values := goutils.GetMapValues(model.Fields)
@@ -347,13 +343,9 @@ func (model *Model) Update(fields map[string]string, id string) map[string]strin
 		strSlice = append(strSlice, "UPDATE ")
 		strSlice = append(strSlice, model.Table())
 		strSlice = append(strSlice, " SET ")
-		columns := goutils.GetMapKeysWithValue(fields)
+		columns := goutils.GetMapKeysWithValue(goutils.GetMapWithoutKeys(fields, []string{"id"}))
 		if len(columns) > 1 {
 			strSlice = append(strSlice, "(")
-		}
-		index := goutils.GetIndexByStrValue(columns, "id")
-		if index != -1 {
-			columns = slices.Delete(columns, index, index+1)
 		}
 		if len(columns) > 1 {
 			strSlice = append(strSlice, strings.Trim(strings.Join(columns, ","), ","))
