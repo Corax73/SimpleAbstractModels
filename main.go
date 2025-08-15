@@ -1,4 +1,4 @@
-package simpleAbstractModels
+package SimpleAbstractModels
 
 import (
 	"database/sql"
